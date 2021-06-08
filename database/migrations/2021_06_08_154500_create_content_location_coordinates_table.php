@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateContentLocationCoordinatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('content_location_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->char('name');
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('registration_code');
-            $table->string('password');
-            $table->string('type');
-            $table->rememberToken();
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->unsignedBigInteger('location_id');
             $table->timestamps();
+
+            $table->foreign('location_id')->references('id')->on('content_locations');
         });
     }
 
@@ -33,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('content_location_coordinates');
     }
 }
