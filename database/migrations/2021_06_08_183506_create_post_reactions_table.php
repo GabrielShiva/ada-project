@@ -15,11 +15,11 @@ class CreatePostReactionsTable extends Migration
     {
         Schema::create('post_reactions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
             $table->char('reaction');
             $table->float('latitude');
             $table->float('longitude');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

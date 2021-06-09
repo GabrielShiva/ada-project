@@ -15,9 +15,9 @@ class CreateUserClassesTable extends Migration
     {
         Schema::create('user_classes', function (Blueprint $table) {
             $table->id();
-            $table->char('role');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('class_id');
+            $table->char('role');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

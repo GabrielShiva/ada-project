@@ -15,10 +15,10 @@ class CreateContentLocationsTable extends Migration
     {
         Schema::create('content_locations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('content_id');
             $table->char('title');
             $table->string('description');
             $table->char('type');
-            $table->unsignedBigInteger('content_id');
             $table->timestamps();
 
             $table->foreign('content_id')->references('id')->on('contents');

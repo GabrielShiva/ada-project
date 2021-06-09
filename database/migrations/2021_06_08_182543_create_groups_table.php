@@ -15,12 +15,12 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('owner_id');
             $table->char('name');
             $table->string('subject');
             $table->char('code');
             $table->char('status');
             $table->char('visibility');
-            $table->unsignedBigInteger('owner_id');
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('users');

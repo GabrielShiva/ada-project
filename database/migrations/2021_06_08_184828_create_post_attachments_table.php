@@ -15,11 +15,11 @@ class CreatePostAttachmentsTable extends Migration
     {
         Schema::create('post_attachments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('post_id');
             $table->char('title');
             $table->string('description');
             $table->string('url');
             $table->char('type');
-            $table->unsignedBigInteger('post_id');
             $table->timestamps();
 
             $table->foreign('post_id')->references('id')->on('posts');

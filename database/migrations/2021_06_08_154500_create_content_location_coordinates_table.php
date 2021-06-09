@@ -15,9 +15,9 @@ class CreateContentLocationCoordinatesTable extends Migration
     {
         Schema::create('content_location_coordinates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('location_id');
             $table->float('latitude');
             $table->float('longitude');
-            $table->unsignedBigInteger('location_id');
             $table->timestamps();
 
             $table->foreign('location_id')->references('id')->on('content_locations');

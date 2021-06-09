@@ -15,10 +15,10 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->char('name');
-            $table->text('description');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('course_id');
+            $table->char('name');
+            $table->text('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

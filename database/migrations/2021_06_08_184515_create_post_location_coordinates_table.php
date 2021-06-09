@@ -15,9 +15,9 @@ class CreatePostLocationCoordinatesTable extends Migration
     {
         Schema::create('post_location_coordinates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('location_id');
             $table->float('latitude');
             $table->float('longitude');
-            $table->unsignedBigInteger('location_id');
             $table->timestamps();
 
             $table->foreign('location_id')->references('id')->on('post_locations');

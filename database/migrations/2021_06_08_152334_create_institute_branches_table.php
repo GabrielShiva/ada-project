@@ -15,11 +15,11 @@ class CreateInstituteBranchesTable extends Migration
     {
         Schema::create('institute_branches', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('institute_id');
             $table->char('name');
             $table->char('status');
             $table->float('latitude');
             $table->float('longitude');
-            $table->unsignedBigInteger('institute_id');
             $table->timestamps();
 
             $table->foreign('institute_id')->references('id')->on('institutes');

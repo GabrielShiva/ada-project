@@ -15,11 +15,11 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('class_id');
             $table->char('title');
             $table->char('subtitle');
             $table->text('body');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('class_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
